@@ -25,9 +25,9 @@ Other installed tools are:
 
 To use this template edit theese files as described:
 
-    - `.env`: Set the container, image and user name.
-    - `devcontainer.json`: Substitute `dockgpu` as you want and `dock` username with the one you set in `.env` file. Theese are needed to set correctly the vscode remote container extension.
-    - `Dockerfile`: Substitute `dock` username with the one you set in `.env` file.
+- `.env`: Set the container, image and user name.
+- `devcontainer.json`: Substitute `dockgpu` as you want and `dock` username with the one you set in `.env` file. Theese are needed to set correctly the vscode remote container extension.
+- `Dockerfile`: Substitute `dock` username with the one you set in `.env` file.
 
 ### Notes
 
