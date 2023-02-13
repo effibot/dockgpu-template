@@ -1,0 +1,18 @@
+#! /bin/bash
+curl 'https://uniroma2-my.sharepoint.com/personal/andrea_efficace_alumni_uniroma2_eu/_layouts/15/download.aspx?UniqueId=4bab4764%2Db116%2D4617%2Db4e6%2Dc03e6a2d004a' \
+  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
+  -H 'Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7' \
+  -H 'Connection: keep-alive' \
+  -H 'Cookie: MicrosoftApplicationsTelemetryDeviceId=e71f5999-0916-0de8-73eb-0058be3424e3; MicrosoftApplicationsTelemetryFirstLaunchTime=1655108249434; rtFa=1K3fqgqAOktT3EMY93vyYDigJB4gi/n91iWRj9Bxo7cmOTgwMkQwQ0EtOEU0Ri00RjNBLTk1NDAtMENGMUY5QjdCMzMwIzEzMzIwMzQ1MDA4NTE0NTA4NyM1MjNFOTRBMC0zMDk0LTYwMDAtMThFMy1BQTNGODgzODdDNjAjQU5EUkVBLkVGRklDQUNFJTQwQUxVTU5JLlVOSVJPTUEyLkVVGNGNaIE8zmKQkPKLsCITIF2AsxQE8GaFLD9oNFb9kC1aeQHN7c6Ju8opbPSYyj4CsjWm8C95HsbHV85FwUx43mGtDmjEhrJ7Ves5+BtPxdKKhplbEqCES7Fr7ZDd3LQaSe3f5oiyPrKbfbVM5/cinW3NJELShx4sDks56MFMjlA/MFSIrvuTARp5hwm2FznWVePhdJLmGKiD1gVkBpQh76db6oauNlTjcyfWgVQrd8lgVYhhWZi9z8mxmgTavfhvwHZrGNdteM3PF6WLtb4j7ka4HMLakOr8VtlnCPwOxzOy7xFzJB/14lL28NLlNCPnfUVez8RRlp9JNQNNX4gMQKIAAAA=; SIMI=eyJzdCI6MH0=; cucg=0; MSFPC=GUID=654c5ba57a3f41f98e1ad783b2c3ae66&HASH=654c&LV=202206&V=4&LU=1654681438649; FedAuth=77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48U1A+VjEzLDBoLmZ8bWVtYmVyc2hpcHwxMDAzMDAwMDlhZTAzMjIxQGxpdmUuY29tLDAjLmZ8bWVtYmVyc2hpcHxhbmRyZWEuZWZmaWNhY2VAYWx1bW5pLnVuaXJvbWEyLmV1LDEzMzE3OTkyODAyMDAwMDAwMCwxMzI4MjAyMDYxODAwMDAwMDAsMTMzMjA4OTc5NjI1Mjk0MTUwLDIuMzguNjYuMjI2LDMsOTgwMmQwY2EtOGU0Zi00ZjNhLTk1NDAtMGNmMWY5YjdiMzMwLCw5NDFhMTRkNy1kNzZiLTRhZDgtYWY2Zi1iZWU0NTdlMzIzMjIsNTIzZTk0YTAtMzA5NC02MDAwLTE4ZTMtYWEzZjg4Mzg3YzYwLGFjYjE5NGEwLTUwNTYtNjAwMC0zNWU2LTA2ZDA1NmY5NGM3ZCwsMCwxMzMyMDU1MjM2MjUyOTQxNTAsMTMzMjA3MjUxNjI1Mjk0MTUwLCwsZXlKNGJYTmZZMk1pT2lKYlhDSkRVREZjSWwwaUxDSjRiWE5mYzNOdElqb2lNU0lzSW1GamNuTWlPaUpiWENKMWNtNDZkWE5sY2pweVpXZHBjM1JsY25ObFkzVnlhWFI1YVc1bWIxd2lYU0lzSW5CeVpXWmxjbkpsWkY5MWMyVnlibUZ0WlNJNkltRnVaSEpsWVM1bFptWnBZMkZqWlVCaGJIVnRibWt1ZFc1cGNtOXRZVEl1WlhVaUxDSjFkR2tpT2lKaGQwSnFkblpaZEZkVmJXdDJZV2hWUkdnNGRrRkJJbjA9LDEzMzIwMzQ4NjA4NDk4ODI3MCwxMzMyMDM0NTAwODAwMDAwMDAsYzBiNzdkMmMtNzNlMS00NjgwLWIyNjEtMTE1MTJhNWQwODg3LCwsLCwsMCwsRU1FQV8zMjRfQ29udGVudCxKa2xBb1FIU052OHBZNExVYU9qMmo3aldkaVJQTkZWbFpGbzRqM2w3SmVTaGduZXl5Yi80ZmIwNWRLMGFGcEpreGN0NE5DdFpSWnRFQno2Q1paTXNlZjRHUklmNFk1WkdyeFFCMjNCcERqMGswU1FxRW9yNWJxUHpad1B4c1JSV1VxMEpqckt4eW5WWmtwbThPOFYvM29SOHNGWXVoU0xuK2I5UUZRN25KRHlWZnc0cjd1S0ZtaWQyUU9Fcll6MmNveU1keGE4bkFUK3dpbkdaRENta0JvTWhaL1hFbjRlMG5QZlc1dWtieWc1d2ptZm1ZbXlrTTh2am5SVUdINVgzMHE5Vm9EU1lEdGg5YlU4ZGdHRGFXZ1NXQlhZLzJYeDJTS3ZqUWtPSlorNWFtMVl2L0JWaElabGFQU1F5bzRKQmUxTVhXaXpoZlBLSDJYcUc5bnphMkE9PTwvU1A+; odbn=1' \
+  -H 'Referer: https://uniroma2-my.sharepoint.com/personal/andrea_efficace_alumni_uniroma2_eu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fandrea%5Fefficace%5Falumni%5Funiroma2%5Feu%2FDocuments%2Ffiles&view=0' \
+  -H 'Sec-Fetch-Dest: iframe' \
+  -H 'Sec-Fetch-Mode: navigate' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'Sec-Fetch-User: ?1' \
+  -H 'Service-Worker-Navigation-Preload: true' \
+  -H 'Upgrade-Insecure-Requests: 1' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Linux"' \
+  --compressed --output ~/cudnn8.tar.xz

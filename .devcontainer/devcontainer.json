@@ -1,0 +1,57 @@
+{
+  // Ubuntu 22.04 w GPU support (CUDA+cuDNN+TensorRT)
+  "name": "dockgpu",
+  "dockerComposeFile": ["docker-compose.yml"],
+  // Only start this service
+  "service": "dockgpu",
+  "runServices": ["dockgpu"],
+  // Configure the container's IDE
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh",
+            "args": ["-l"]
+          }
+        },
+        "terminal.integrated.fontFamily": "MesloLGS NF",
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": null,
+        "editor.wordWrap": "on",
+        "python.pythonPath": "/home/dock/conda/bin/python",
+        "python.linting.pylintEnabled": true,
+        "python.linting.enabled": true,
+        "python.condaPath": "/home/dock/conda/bin/conda",
+        "python.defaultInterpreterPath": "/home/dock/conda/bin/python",
+        "python.analysis.inlayHints.pytestParameters": true,
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.formatOnPaste": true
+        },
+        "python.formatting.provider": "black"
+      },
+      "extensions": [
+        "aaron-bond.better-comments",
+        "donjayamanne.python-environment-manager",
+        "github.copilot",
+        "gruntfuggly.todo-tree",
+        "hediet.vscode-drawio",
+        "kevinrose.vsc-python-indent",
+        "ms-ceintl.vscode-language-pack-it",
+        "ms-python.black-formatter",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "njpwerner.autodocstring",
+        "shardulm94.trailing-spaces",
+        "visualstudioexptteam.vscodeintellicode",
+        "wayou.vscode-todo-highlight"
+      ]
+    }
+  },
+  "remoteUser": "dock",
+  // Start the VS Code instance in the container's workspace
+  "workspaceFolder": "/home/dock/workspace",
+  // Creates a sleeping process that VSC uses to stop the container
+  "overrideCommand": true
+}

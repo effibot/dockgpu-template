@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  dockgpu:
+    env_file: .env
+    environment:
+      - USER_NAME
+      - USER_UID
+      - USER_GID
+      - CONTAINER_NAME
+      - IMAGE_NAME
+      - DEFAULT_TERM
+      - DEFAULT_SHELL
+      - NVIDIA_DRIVER_CAPABILITIES
+      - NVIDIA_VISIBLE_DEVICES
+    image: ${IMAGE_NAME}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    network_mode: host
+    container_name: ${CONTAINER_NAME}
+    user: ${USER_NAME}
+    volumes:
+      - ~/.ssh:/home/${USER_NAME}/.ssh
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ~/.gitconfig:/home/${USER_NAME}/.gitconfig
+      - ../:/home/${USER_NAME}/workspace/
+    working_dir: /home/${USER_NAME}/workspace
+    init: true
+    stdin_open: false
+    tty: true
+    command: ["/bin/bash", "-c", "trap 'exit 0' TERM; sleep infinity & wait"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+              count: 1
