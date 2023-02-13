@@ -10,6 +10,9 @@ ENV UID=$uid
 ENV GID=$gid
 ENV HOME=/home/$USER
 ENV DEBIAN_FRONTEND=noninteractive
+# Add Conda to PATH
+ENV CONDA_DIR=${HOME}/conda
+ENV PATH=${CONDA_DIR}/bin:${PATH}
 
 # Install packages and clean up
 RUN apt update && apt install -q -y --no-install-recommends --fix-missing --allow-change-held-packages \
@@ -66,7 +69,11 @@ RUN chmod +x ${HOME}/download_tars.sh && \
     cp -r cudnn-linux-x86_64-8.6.0.163_cuda11-archive/include/* /usr/local/cuda/include/ && \
     cp -r cudnn-linux-x86_64-8.6.0.163_cuda11-archive/lib/* /usr/local/cuda/lib64/ && \
     rm -rf cudnn-linux-x86_64-8.6.0.163_cuda11-archive && \
-    chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+    chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn* && \
+    chsh -s /usr/bin/zsh ${USER}
+
+# Switch to non-root user
+USER ${USER}
 
 # Install ZSH and Oh My ZSH with Powerlevel10k theme through script
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
@@ -90,12 +97,7 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
     -a "typeset -g POWERLEVEL9K_MODE=nerdfont-complete" \
     -a "compinit" \
     -a 'eval "$(zoxide init zsh)"' \
-    -a "source ~/.aliases.sh" && \
-    chsh -s /usr/bin/zsh ${USER}
-
-# Add Conda to PATH
-ENV CONDA_DIR=${HOME}/conda
-ENV PATH=${CONDA_DIR}/bin:${PATH}
+    -a "source ~/.aliases.sh" 
 
 # Install Mambaforge and conda packages, then clean up and initialize zsh
 RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh" -O ~/miniforge.sh && \
@@ -119,9 +121,6 @@ RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mamb
     conda clean --force-pkgs-dirs --all --yes  && \
     mamba init zsh && \
     conda config --set auto_activate_base true
-
-# Switch to non-root user
-USER ${USER}
 
 WORKDIR ${HOME}
 ENTRYPOINT [ "/bin/zsh" ]
