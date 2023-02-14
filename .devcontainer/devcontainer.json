@@ -29,7 +29,8 @@
           "editor.formatOnSave": true,
           "editor.formatOnPaste": true
         },
-        "python.formatting.provider": "black"
+        "python.formatting.provider": "black",
+        "python.terminal.activateEnvironment": false
       },
       "extensions": [
         "aaron-bond.better-comments",

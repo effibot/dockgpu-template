@@ -111,9 +111,10 @@ RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Mamb
     ipython ipykernel isort \
     jupyter \
     matplotlib matplotlib-inline mypy \
-    numpy \
+    numpy notebook \
+    opencv \
     pandas pylint \
-    seaborn \
+    seaborn scipy \
     && \
     conda clean --tarballs --index-cache --packages --yes && \
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
