@@ -14,33 +14,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV CONDA_DIR=${HOME}/conda
 ENV PATH=${CONDA_DIR}/bin:${PATH}
 
-# Install packages and clean up
-RUN apt update && apt install -q -y --no-install-recommends --fix-missing --allow-change-held-packages \
-    bzip2 \
-    chroma curl cmake \
-    default-jdk  default-jre\
-    fzf \
-    gcc g++ git gh \
-    linux-headers-$(uname -r) libnccl2 libnccl-dev libcudnn8 libcudnn8-dev libnvinfer8 \
-    libnvinfer-dev libnvinfer-plugin8 libnvinfer-plugin-dev \
-    make maven \
-    nano neofetch \
-    nvidia-cuda-toolkit\
-    openssl openssh-client \
-    procps \
-    sudo \
-    unzip \
-    wget \
-    zip zoxide \
-    && \
-    apt full-upgrade -y && apt autoremove -y && apt clean -y && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*/apt/lists/*
-
-# Install LSD for ls substitute
-RUN wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb -P /tmp && \
-    dpkg -i /tmp/lsd_0.23.1_amd64.deb && \
-    rm /tmp/lsd_0.23.1_amd64.deb
-
 # Create non-root user with UID and GID
 RUN groupadd -g ${gid} ${username} && \
     useradd -u ${uid} -g ${gid} -s /bin/bash -m ${username} && \
@@ -58,14 +31,40 @@ RUN mkdir -p ${HOME}/zsh_history && \
 COPY --chown=${USER}:${USER} ./config/.aliases.sh ${HOME}/
 COPY --chown=${USER}:${USER} ./config/.bashrc ${HOME}/
 COPY --chown=${USER}:${USER} ./config/.nanorc ${HOME}/
-COPY --chown=${USER}:${USER} ./config/download_tars.sh ${HOME}/
+
+# Install packages and clean up
+RUN apt update && apt install -q -y --no-install-recommends --fix-missing --allow-change-held-packages \
+    apt-utils \
+    bzip2 \
+    chroma curl cmake \
+    default-jdk  default-jre\
+    fzf \
+    gcc g++ git gh git-lfs \
+    libnccl2 libnccl-dev libcudnn8 libcudnn8-dev libnvinfer8 \
+    libnvinfer-dev libnvinfer-plugin8 libnvinfer-plugin-dev \
+    make maven megatools \
+    nano neofetch \
+    nvidia-cuda-toolkit \
+    openssl openssh-client \
+    procps \
+    sudo \
+    unzip \
+    wget \
+    zip zoxide \
+    && \
+    apt-mark unhold $(sudo apt-mark showhold) && apt update && \
+    apt full-upgrade -y && apt autoremove -y && apt clean -y && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*/apt/lists/*
+
+# Install LSD for ls substitute
+RUN wget https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb -P /tmp && \
+    dpkg -i /tmp/lsd_0.23.1_amd64.deb && \
+    rm /tmp/lsd_0.23.1_amd64.deb
 
 # set up nvidia libs
-RUN chmod +x ${HOME}/download_tars.sh && \
-    /bin/bash ${HOME}/download_tars.sh && \
+RUN megadl 'https://mega.nz/file/JEYHgY6D#IoAB2vOVuXmlY3bg8U_Zeci8hb7WAo0v2eLyvoWCtfI' --path=${HOME} && \
     tar -xf ${HOME}/cudnn8.tar.xz  && \
     rm -f ${HOME}/cudnn8.tar.xz && \
-    rm -f ${HOME}/download_tars.sh && \
     cp -r cudnn-linux-x86_64-8.6.0.163_cuda11-archive/include/* /usr/local/cuda/include/ && \
     cp -r cudnn-linux-x86_64-8.6.0.163_cuda11-archive/lib/* /usr/local/cuda/lib64/ && \
     rm -rf cudnn-linux-x86_64-8.6.0.163_cuda11-archive && \
